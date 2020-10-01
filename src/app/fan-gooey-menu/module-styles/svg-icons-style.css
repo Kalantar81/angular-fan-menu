@@ -1,0 +1,15 @@
+
+
+.menu-icon {
+  background-image: url('~assets/svgIcons/round-menu.svg');
+}
+
+.restore-icon {
+  background-image: url('~assets/svgIcons/restore.svg');
+}
+
+.restore-icon:hover {
+  background: url('~assets/svgIcons/restore-cyan.svg');
+  /* fill: lawngreen; */
+  /* filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%); */
+}

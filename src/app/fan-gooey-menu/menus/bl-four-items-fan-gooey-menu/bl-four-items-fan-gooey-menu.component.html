@@ -1,0 +1,30 @@
+<div
+  #circularMenuLeft
+  id="bottomLeftFanMenu"
+  class="circular-menu-left  active">
+  <div
+    #floatingBtn
+    class="floating-btn"
+    [ngClass]="_menuIcon"
+    onclick="document.getElementById('bottomLeftFanMenu').classList.toggle('active');">
+  </div>
+  <menu class="items-wrapper">
+    <div
+      class="menu-item"
+      [ngClass]="_itemIcons.firstChild.name"
+      (click) = "_firstChildAction()">
+    </div>
+    <div
+      class="menu-item"
+      [ngClass]="_itemIcons.secondChild.name"
+      (click) = "_secondChildAction()"></div>
+    <div
+      class="menu-item"
+      [ngClass]="_itemIcons.thirdChild.name"
+      (click) = "_thirdChildAction()"></div>
+    <div
+      class="menu-item"
+      [ngClass]="_itemIcons.fourthChild.name"
+      (click) = "_fourthChildAction()"></div>
+  </menu>
+</div>
