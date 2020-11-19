@@ -1,77 +1,183 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Output, QueryList, ViewChild, ViewChildren,EventEmitter, AfterViewInit } from '@angular/core';
+import { IFanGooeyMenuButton, IMenuStatus } from 'app/fan-gooey-menu/models/IFan-menu-interfaces';
+import { EnumGooeyMenuOpenDirection, EnumIconConditions } from 'app/fan-gooey-menu/models/menu-enums';
+import { GooeyMenuComponent } from '../gooey-menu/gooey-menu.component';
 
 @Component({
   selector: 'app-bl-four-items-fan-gooey-menu',
   templateUrl: './bl-four-items-fan-gooey-menu.component.html',
   styleUrls: ['./bl-four-items-fan-gooey-menu.component.css']
 })
-export class BlFourItemsFanGooeyMenuComponent implements OnInit {
-  private _menuBtnColor: string;
-  private _menuSize: number;
-  private _menuIcon: string;
-  private _itemIcons: ItemIcons = new ItemIcons();
-
-
-  public openMenuIndicator = false;
+export class BlFourItemsFanGooeyMenuComponent implements OnInit, AfterViewInit {
 
   @ViewChild('circularMenuLeft')
   public circularMenuLeftDiv: ElementRef;
 
-  @ViewChild('floatingBtn')
-  public floatingBtnDiv: ElementRef;
+  @ViewChildren(GooeyMenuComponent)
+  fanMenuChildren: QueryList<GooeyMenuComponent>;
 
-  constructor() {
-    this._menuBtnColor = 'red';
-    this._menuIcon = 'menu-icon';
-
-    this._itemIcons = {
-      firstChild: {name: 'restore-icon', action: 'FIRST_CHILD_ACTION'},
-      secondChild: {name: 'restore-icon', action: 'SECOND_CHILD_ACTION'},
-      thirdChild: {name: 'restore-icon', action: 'THIRD_CHILD_ACTION'},
-      fourthChild: {name: 'restore-icon', action: 'FOURTH_CHILD_ACTION'}
-    };
+  @Input()
+  set isOpenAtStart(p_isOpenAtStart: boolean) {
+    this._isOpenAtStart = p_isOpenAtStart;
+    this.openMenuIndicator = this._isOpenAtStart;
   }
 
-  ngOnInit() {
-    //  this.circularMenuLeftDiv.nativeElement.style.transform =  'scale(1)';
-    this.floatingBtnDiv.nativeElement.style.backgroundColor = this._menuBtnColor;
+  @Input()
+  set fanMenuBtnColor(p_fanMenuBtnColor: string) {
+    this._fanMenuBtnColor = p_fanMenuBtnColor;
   }
 
-  public mouseClick(): void {
+  @Input()
+  set menuIconName(p_menuIconName: string) {
+    this._menuIconName = p_menuIconName;
+  }
+
+  @Input()
+  set menuSize(p_menuSize: number) {
+    this._menuSize = p_menuSize;
+  }
+
+  @Input()
+  set gooeyItems(p_gooeyItems: Array<IFanGooeyMenuButton>) {
+    this._gooeyItems = [];
+    this._fanMenuButtons = [];
+
+    for (let i = 0; i < p_gooeyItems.length; i++) {
+      if (p_gooeyItems[i].children) {
+        this._gooeyItems.push(p_gooeyItems[i]);
+      } else {
+        this._fanMenuButtons.push(
+          {
+            id: p_gooeyItems[i].id,
+            checked: p_gooeyItems[i].checked,
+            enabled: p_gooeyItems[i].enabled,
+            menuBtnColor: p_gooeyItems[i].menuBtnColor,
+            buttonIconName: p_gooeyItems[i].buttonIconName,
+            tooltip: p_gooeyItems[i].tooltip
+          }
+        );
+      }
+
+    }
+    this._defineOpenDirections();
+  }
+
+  @Output()
+  combineMenuActionName: EventEmitter<string> = new EventEmitter<string>();
+
+  private _isOpenAtStart: boolean = true;
+  private _fanMenuBtnColor: string;
+  private _menuIconName: string;
+  private _menuSize: number;
+  private _gooeyItems: Array<IFanGooeyMenuButton> = [];
+  private _fanMenuButtons: Array<IFanGooeyMenuButton> = [];
+
+  public openMenuIndicator: boolean = true;
+  public EnumIconConditions = EnumIconConditions;
+
+  constructor() {}
+
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    const fanMenuSize = this._menuSize ? 'scale(' + this._menuSize + ')' : 'scale(1)';
+    this.circularMenuLeftDiv.nativeElement.style.transform = fanMenuSize;
+  }
+
+  public fanMenuButtonTrackByFunc(p_index: number, p_item: IFanGooeyMenuButton): any {
+    return p_item.id;
+  }
+
+  public gooeyItemsTrackByFunc(p_index: number, p_item: IFanGooeyMenuButton): any {
+    return p_item.id;
+  }
+
+  public fanMenuBtnClick(): void {
     if (this.openMenuIndicator) {
       this.openMenuIndicator = false;
+      this._closeAllGooeyMenus();
+      console.log('fan menu close');
     } else {
       this.openMenuIndicator = true;
+      console.log('fan menu open');
     }
-    this.circularMenuLeftDiv.nativeElement.style.backgroundColor = this._menuBtnColor;
   }
 
-  private _firstChildAction(): void {
-    alert(this._itemIcons.firstChild.action);
+  private _closeAllGooeyMenus(): void {
+    this.fanMenuChildren.map((item: GooeyMenuComponent) => {
+      if (item.menuStatus.isMenuOpen) {
+        item.clickGooeyMenuBtn();
+      }
+    });
   }
 
-  private _secondChildAction(): void {
-    alert(this._itemIcons.secondChild.action);
+  private _updateMenus(event: IMenuStatus): void {
+    this.fanMenuChildren.map((item: GooeyMenuComponent) => {
+      if ((event.menuId !== item.gooeyBtnId) && (item.menuStatus.isMenuOpen)) {
+        item.clickGooeyMenuBtn();
+      }
+    });
   }
 
-  private _thirdChildAction(): void {
-    alert(this._itemIcons.thirdChild.action);
+  private _closeOpenItems(p_index: number): void {
+    if (this._fanMenuButtons[p_index].enabled) {
+      this.fanMenuChildren.map((item: GooeyMenuComponent) => {
+        if (item.menuStatus.isMenuOpen) {
+          item.clickGooeyMenuBtn();
+        }
+      });
+    }
+    this.combineMenuActionName.emit(this._fanMenuButtons[p_index].id);
   }
 
-  private _fourthChildAction(): void {
-    alert(this._itemIcons.fourthChild.action);
+  private _getcombineMenuActionName(p_gooeyActionName: string): void {
+    this.combineMenuActionName.emit(p_gooeyActionName);
+    this.fanMenuChildren.map((item: GooeyMenuComponent) => {
+      if (item.menuStatus.isMenuOpen && !(item.gooeyBtnId == p_gooeyActionName)) {
+        item.clickGooeyMenuBtn();
+      }
+    });
   }
+
+  private _defineOpenDirections(): void {
+    const fanMenuButtonsAmount: number = this._fanMenuButtons.length;
+    switch (this._gooeyItems.length) {
+      case 1:
+        if (fanMenuButtonsAmount > 2) {
+          this._gooeyItems[0].openGooeyMenuDirection = EnumGooeyMenuOpenDirection.RIGHT;
+        } else {
+          this._gooeyItems[0].openGooeyMenuDirection = EnumGooeyMenuOpenDirection.UP;
+        }
+        break;
+      case 2:
+        for (let i = 0; i < 2; i++) {
+          if (fanMenuButtonsAmount > 2) {
+            this._gooeyItems[i].openGooeyMenuDirection = EnumGooeyMenuOpenDirection.RIGHT;
+          }
+        }
+        break;
+      case 3:
+        for (let i = 0; i < 3; i++) {
+          if (i < 1) {
+            this._gooeyItems[i].openGooeyMenuDirection = EnumGooeyMenuOpenDirection.UP;
+          } else {
+            this._gooeyItems[i].openGooeyMenuDirection = EnumGooeyMenuOpenDirection.RIGHT;
+          }
+        }
+        break;
+      case 4:
+        for (let i = 0; i < 4; i++) {
+          if (i < 2) {
+            this._gooeyItems[i].openGooeyMenuDirection = EnumGooeyMenuOpenDirection.UP;
+          } else {
+            this._gooeyItems[i].openGooeyMenuDirection = EnumGooeyMenuOpenDirection.RIGHT;
+          }
+        }
+        break;
+    }
+  }
+
+
 }
 
-export class ItemIcons {
-  firstChild: IIconSettings;
-  secondChild: IIconSettings;
-  thirdChild: IIconSettings;
-  fourthChild?: IIconSettings;
-}
 
-export interface IIconSettings {
-  name: string;
-  action: string;
-  animation?: boolean;
-}

@@ -16,8 +16,8 @@
         <div
           *ngFor = "let item of _gooeyChildren; let i = index"
           class="menu-tooltip"
-          [class.menu-tooltip-text] = "_menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"
-          [class.menu-tooltip-text-right] = "_menuOpenDirection == EnumGooeyMenuOpenDirection.UP"
+          [class.menu-item-gooey] = "_menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"
+          [class.menu-item-gooey-open-up] = "_menuOpenDirection == EnumGooeyMenuOpenDirection.UP"
           [ngClass] = "[
               item.enabled ? item.buttonIconName : item.buttonIconName + '-' + EnumIconConditions.Disable,
               item.checked ? item.buttonIconName + '-' + EnumIconConditions.Checked : ''
