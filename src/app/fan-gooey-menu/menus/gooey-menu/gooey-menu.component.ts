@@ -37,10 +37,10 @@ export class GooeyMenuComponent implements OnInit, AfterViewInit {
   @Input() gooeyChildren: Array<IFanGooeyMenuButton>;
   @Input() gooeyBtnId: string;
 
-  set menuStatus(p_menuStatus: IMenuStatus) {
+  set menuStatus(status: IMenuStatus) {
     this._menuStatus = {
       menuId: this.gooeyBtnId,
-      isMenuOpen: p_menuStatus.isMenuOpen,
+      isMenuOpen: status.isMenuOpen,
     };
   }
 
@@ -48,8 +48,8 @@ export class GooeyMenuComponent implements OnInit, AfterViewInit {
     return this._menuStatus;
   }
 
-  @Output() gooeyMenuActivated = new EventEmitter();
-  @Output() combineMenuActionName = new EventEmitter();
+  @Output() gooeyMenuActivated: EventEmitter<IMenuStatus> = new EventEmitter<IMenuStatus>();
+  @Output() combineMenuActionName: EventEmitter<string> = new EventEmitter<string>();
 
   private _menuStatus: IMenuStatus;
 

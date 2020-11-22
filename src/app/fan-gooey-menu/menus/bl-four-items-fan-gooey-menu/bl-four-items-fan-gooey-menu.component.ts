@@ -122,10 +122,10 @@ export class BlFourItemsFanGooeyMenuComponent implements OnInit, AfterViewInit {
     this.combineMenuActionName.emit(button.id);
   }
 
-  public getCombineMenuActionName(p_gooeyActionName: string): void {
-    this.combineMenuActionName.emit(p_gooeyActionName);
+  public getCombineMenuActionName(actionName: string): void {
+    this.combineMenuActionName.emit(actionName);
     this.fanMenuChildren.forEach((item: GooeyMenuComponent) => {
-      if (item.menuStatus.isMenuOpen && !(item.gooeyBtnId === p_gooeyActionName)) {
+      if (item.menuStatus.isMenuOpen && !(item.gooeyBtnId === actionName)) {
         item.clickGooeyMenuBtn();
       }
     });
