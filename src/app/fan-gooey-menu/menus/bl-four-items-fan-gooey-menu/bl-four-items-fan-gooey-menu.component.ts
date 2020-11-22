@@ -1,12 +1,29 @@
-import { Component, ElementRef, Input, OnInit, Output, QueryList, ViewChild, ViewChildren,EventEmitter, AfterViewInit } from '@angular/core';
-import { IFanGooeyMenuButton, IMenuStatus } from 'app/fan-gooey-menu/models/IFan-menu-interfaces';
-import { EnumGooeyMenuOpenDirection, EnumIconConditions } from 'app/fan-gooey-menu/models/menu-enums';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
+import {
+  IFanGooeyMenuButton,
+  IMenuStatus,
+} from 'app/fan-gooey-menu/models/IFan-menu-interfaces';
+import {
+  EnumGooeyMenuOpenDirection,
+  EnumIconConditions,
+} from 'app/fan-gooey-menu/models/menu-enums';
 import { GooeyMenuComponent } from '../gooey-menu/gooey-menu.component';
 
 @Component({
   selector: 'app-bl-four-items-fan-gooey-menu',
   templateUrl: './bl-four-items-fan-gooey-menu.component.html',
-  styleUrls: ['./bl-four-items-fan-gooey-menu.component.css']
+  styleUrls: ['./bl-four-items-fan-gooey-menu.component.css'],
 })
 export class BlFourItemsFanGooeyMenuComponent implements OnInit, AfterViewInit {
 
@@ -53,8 +70,8 @@ export class BlFourItemsFanGooeyMenuComponent implements OnInit, AfterViewInit {
             enabled: p_gooeyItems[i].enabled,
             menuBtnColor: p_gooeyItems[i].menuBtnColor,
             buttonIconName: p_gooeyItems[i].buttonIconName,
-            tooltip: p_gooeyItems[i].tooltip
-          }
+            tooltip: p_gooeyItems[i].tooltip,
+          },
         );
       }
 
@@ -75,9 +92,11 @@ export class BlFourItemsFanGooeyMenuComponent implements OnInit, AfterViewInit {
   public openMenuIndicator: boolean = true;
   public EnumIconConditions = EnumIconConditions;
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   ngAfterViewInit() {
     const fanMenuSize = this._menuSize ? 'scale(' + this._menuSize + ')' : 'scale(1)';

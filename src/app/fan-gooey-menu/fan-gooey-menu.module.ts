@@ -1,20 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxFanGooeyMenuComponent } from './ngx-fan-gooey-menu/ngx-fan-gooey-menu.component';
+import { NgModule } from '@angular/core';
 import { BlFourItemsFanGooeyMenuComponent } from './menus/bl-four-items-fan-gooey-menu/bl-four-items-fan-gooey-menu.component';
 import { GooeyMenuComponent } from './menus/gooey-menu/gooey-menu.component';
+import { NgxFanGooeyMenuComponent } from './ngx-fan-gooey-menu/ngx-fan-gooey-menu.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
-    NgxFanGooeyMenuComponent
+    NgxFanGooeyMenuComponent,
   ],
   declarations: [
     NgxFanGooeyMenuComponent,
     BlFourItemsFanGooeyMenuComponent,
-    GooeyMenuComponent
-  ]
+    GooeyMenuComponent,
+  ],
 })
-export class FanGooeyMenuModule { }
+export class FanGooeyMenuModule {
+}

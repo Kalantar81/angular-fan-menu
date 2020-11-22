@@ -1,11 +1,26 @@
-import { Component, ElementRef, Input, OnInit, Output, ViewChild, EventEmitter, AfterViewInit } from '@angular/core';
-import { IFanGooeyMenuButton, IMenuStatus } from 'app/fan-gooey-menu/models/IFan-menu-interfaces';
-import { EnumGooeyMenuOpenDirection, EnumIconConditions } from 'app/fan-gooey-menu/models/menu-enums';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import {
+  IFanGooeyMenuButton,
+  IMenuStatus,
+} from 'app/fan-gooey-menu/models/IFan-menu-interfaces';
+import {
+  EnumGooeyMenuOpenDirection,
+  EnumIconConditions,
+} from 'app/fan-gooey-menu/models/menu-enums';
 
 @Component({
   selector: 'app-gooey-menu',
   templateUrl: './gooey-menu.component.html',
-  styleUrls: ['./gooey-menu.component.css']
+  styleUrls: ['./gooey-menu.component.css'],
 })
 export class GooeyMenuComponent implements OnInit, AfterViewInit {
 
@@ -52,7 +67,7 @@ export class GooeyMenuComponent implements OnInit, AfterViewInit {
   set menuStatus(p_menuStatus: IMenuStatus) {
     this._menuStaus = {
       menuId: this._gooeyBtnId,
-      isMenuOpen: p_menuStatus.isMenuOpen
+      isMenuOpen: p_menuStatus.isMenuOpen,
     };
   }
 
@@ -77,13 +92,14 @@ export class GooeyMenuComponent implements OnInit, AfterViewInit {
   public EnumGooeyMenuOpenDirection = EnumGooeyMenuOpenDirection;
   public EnumIconConditions = EnumIconConditions;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.floatingBtnDiv.nativeElement.style.backgroundColor = this._menuBtnColor;
     this.menuStatus = {
       isMenuOpen: false,
-      menuId: this._gooeyBtnId
+      menuId: this._gooeyBtnId,
     };
   }
 

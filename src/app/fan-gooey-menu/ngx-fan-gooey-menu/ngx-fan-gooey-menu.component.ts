@@ -1,11 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { IFanGooeyMenuButton } from '../models/IFan-menu-interfaces';
 import { EnumMenuLocation } from '../models/menu-enums';
 
 @Component({
   selector: 'ngx-fan-gooey-menu',
   templateUrl: './ngx-fan-gooey-menu.component.html',
-  styleUrls: ['./ngx-fan-gooey-menu.component.css']
+  styleUrls: ['./ngx-fan-gooey-menu.component.css'],
 })
 export class NgxFanGooeyMenuComponent implements OnInit {
 
@@ -45,7 +51,8 @@ export class NgxFanGooeyMenuComponent implements OnInit {
   private _menuLocation: EnumMenuLocation;
 
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -1,24 +1,22 @@
-
-
 /* --------------------------------------------------------- */
 .circular-menu-left.active .floating-btn i {
   transform: rotate(90deg);
 }
 
 .circular-menu-left.active .fan-menu-item:nth-child(1) {
-  transform: translate3d(-1em,-7em,0);
+  transform: translate3d(-1em, -7em, 0);
 }
 
 .circular-menu-left.active .fan-menu-item:nth-child(2) {
-  transform: translate3d(3.5em,-6.3em,0);
+  transform: translate3d(3.5em, -6.3em, 0);
 }
 
 .circular-menu-left.active .fan-menu-item:nth-child(3) {
-  transform: translate3d(6.5em,-3.2em,0);
+  transform: translate3d(6.5em, -3.2em, 0);
 }
 
 .circular-menu-left.active .fan-menu-item:nth-child(4) {
-  transform: translate3d(7em,1em,0);
+  transform: translate3d(7em, 1em, 0);
 }
 
 /* ------------------------------------------------------------- */
@@ -95,12 +93,12 @@
   border-radius: 50%;
   text-align: center;
   line-height: 3;
-  background-color: hsla(0,0%,0%,.1);
+  background-color: hsla(0, 0%, 0%, .1);
   transition: transform .3s ease, background .2s ease;
 }
 
 .circular-menu-left .fan-menu-item:hover {
-  background-color: hsla(0,0%,0%,.3);
+  background-color: hsla(0, 0%, 0%, .3);
 }
 
 .circular-menu-left.active .fan-menu-item {
