@@ -71,9 +71,9 @@ export class GooeyMenuComponent implements OnInit, AfterViewInit {
     this.circularMenuDiv.nativeElement.id = this.gooeyBtnId;
   }
 
-  public _childAction(p_index: number): void {
-    if (this.gooeyChildren[p_index].enabled) {
-      this.combineMenuActionName.emit(this.gooeyChildren[p_index].id);
+  public childAction(item: IFanGooeyMenuButton): void {
+    if (item.enabled) {
+      this.combineMenuActionName.emit(item.id);
     }
   }
 

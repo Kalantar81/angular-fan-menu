@@ -16,7 +16,7 @@
     </div>
     <menu class="gooey-menu-items-wrapper">
       <div
-        *ngFor="let item of gooeyChildren; let i = index"
+        *ngFor="let item of gooeyChildren"
         class="menu-tooltip"
         [class.menu-item-gooey]="menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"
         [class.menu-item-gooey-open-up]="menuOpenDirection == EnumGooeyMenuOpenDirection.UP"
@@ -24,7 +24,7 @@
               item.enabled ? item.buttonIconName : item.buttonIconName + '-' + EnumIconConditions.Disable,
               item.checked ? item.buttonIconName + '-' + EnumIconConditions.Checked : ''
             ]"
-        (click)="_childAction(i)">
+        (click)="childAction(item)">
               <span
                 *ngIf="item.tooltip"
                 [class.menu-tooltip-text]="menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"
