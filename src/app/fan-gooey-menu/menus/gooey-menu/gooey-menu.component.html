@@ -4,7 +4,9 @@
     class="gooey-menu-left">
       <div
         #floatingBtn
-        class="gooey-floating-btn">
+        class="gooey-floating-btn menu-tooltip"
+        [ngClass]="_menuIcon"
+        (click)="clickGooeyMenuBtn()">
           <span
             *ngIf="_menuBtnTooltip"
             [class.menu-tooltip-text] = "_menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"

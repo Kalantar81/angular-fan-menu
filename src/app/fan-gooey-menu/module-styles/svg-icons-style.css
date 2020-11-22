@@ -13,3 +13,7 @@
   /* fill: lawngreen; */
   /* filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%); */
 }
+
+.map-icon {
+  background-image: url('~assets/svgIcons/map.svg');
+}

@@ -4,7 +4,8 @@
   class="circular-menu-left  circular-menu-bottom-left"
   [ngClass]="{'active': openMenuIndicator}">
   <div
-    class="floating-btn menu-icon-fanMenu"
+    class="floating-btn"
+    [ngClass]="_menuIconName"
     [style.background-color]="_fanMenuBtnColor ? _fanMenuBtnColor: '#ff9900'"
     (click)="fanMenuBtnClick()">
       <div></div>
@@ -13,6 +14,7 @@
     <div
       class="fan-menu-item menu-tooltip"
       *ngFor="let fanMenuButton of _fanMenuButtons; let i = index; trackBy: fanMenuButtonTrackByFunc"
+      [style.background-color]="fanMenuButton.menuBtnColor ? fanMenuButton.menuBtnColor : 'none'"
       [ngClass] = "[
           fanMenuButton.enabled ? fanMenuButton.buttonIconName : fanMenuButton.buttonIconName + '-' + EnumIconConditions.Disable,
           fanMenuButton.checked ? fanMenuButton.buttonIconName + '-' + EnumIconConditions.Checked : ''
@@ -20,7 +22,7 @@
       (click) = "_closeOpenItems(i)">
         <span
           *ngIf = "fanMenuButton.tooltip"
-          class="menu-toolrip-text">
+          class="menu-tooltip-text">
             {{fanMenuButton.tooltip}}
         </span>
     </div>
@@ -33,6 +35,7 @@
           [menuIcon]="item.buttonIconName"
           [menuOpenDirection]="item.openGooeyMenuDirection"
           [gooeyBtnId]="item.id"
+          [menuBtnTooltip]="item.tooltip"
           (gooeyMenuActivated)="_updateMenus($event)"
           (combineMenuActionName)="_getcombineMenuActionName($event)">
         </app-gooey-menu>

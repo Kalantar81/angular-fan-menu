@@ -2,23 +2,21 @@
 
 .gooey-menu-left {
   position: fixed;
-  width: 3em;
-  height: 3em;
-  top: .25em;
-  right: -.25em;
+  width: 3.5em;
+  height: 3.5em;
   border-radius: 50%;
   box-shadow:  0 2px 5px 0 hsla(0, 0%, 0%, .26);
   color: hsl(0, 0%, 100%);
   text-align: center;
-  line-height: 3;
+  line-height: 3.9;
   cursor: pointer;
   transform: translate3d(-0.6em,0,0);
+  margin-left: 5px;
 }
 
-.gooey-floating-btn{
+.gooey-floating-btn {
   width: 3.5em;
   height: 3.5em;
-  top: -.28em;
   border-radius: 50%;
   box-shadow: 0 2px 5px 0 hsla(0, 0%, 0%, .26);
   color: hsl(0, 0%, 100%);
@@ -35,10 +33,10 @@
 }
 
 .menu-item-gooey,
-.menu-item-gooey-open-down {
+.menu-item-gooey-open-up {
   position: absolute;
   top: .2em;
-  right: .2em
+  right: .2em;
 }
 
 .gooey-menu-left .menu-item-gooey,
@@ -52,7 +50,7 @@
   text-align: center;
   line-height: 3;
   background-color: hsla(0,0%,0%,.1);
-  transition: transform .3s ease background .2s ease;
+  transition: all .2s ease-in;
 }
 
 .gooey-menu-left .menu-item-gooey:hover,
@@ -77,4 +75,21 @@
 
 .gooey-menu-left.active .menu-item-gooey:nth-child(4) {
   transform: translate3d(20em,0.1em,0);
+}
+
+/* ------------------------------------------------------------------- */
+.gooey-menu-left.active .menu-item-gooey-open-up:nth-child(1) {
+  transform: translate3d(0.1em,-5em,0);
+}
+
+.gooey-menu-left.active .menu-item-gooey-open-up:nth-child(2) {
+  transform: translate3d(0.1em,-10em,0);
+}
+
+.gooey-menu-left.active .menu-item-gooey-open-up:nth-child(3) {
+  transform: translate3d(0.1em, -15em, 0);
+}
+
+.gooey-menu-left.active .menu-item-gooey-open-up:nth-child(4) {
+  transform: translate3d(0.1em,-20em,0);
 }
