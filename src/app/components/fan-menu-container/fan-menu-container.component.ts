@@ -25,22 +25,25 @@ export class FanMenuContainerComponent implements OnInit {
       children: [
         {id: 'b1',  buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b1 action'},
         {id: 'b2',  buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b2 action'},
-        {id: 'b3', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b3 action'},
+        {id: 'b3', buttonIconName: 'restore-icon', checked: true, enabled: true, tooltip: 'b3 action checked icon'},
+        {id: 'b4', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b4 action'}
       ]},
-      {id: 'a2', menuBtnColor: 'orange', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'a2 action',
+      {id: 'a2', menuBtnColor: '#00ff00', buttonIconName: 'menu-icon', checked: false, enabled: true, tooltip: 'a2 action',
       children: [
-        {id: 'b1',  buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b1 action'},
-        {id: 'b2',  buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b2 action'},
-        {id: 'b3', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b3 action'},
+        {id: 'c1',  buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'c1 action'},
+        {id: 'c2',  buttonIconName: 'restore-icon', checked: true, enabled: true, tooltip: 'c2 action checked icon'},
+        {id: 'c3', buttonIconName: 'restore-icon', checked: false, enabled: false, tooltip: 'c3 action disable icon'},
+        {id: 'c4', buttonIconName: 'restore-icon', checked: false, enabled: false, tooltip: 'c4 action disable icon'}
       ]},
-      {id: 'a3',  buttonIconName: 'menu-icon', checked: false, enabled: true, tooltip: 'a3 action',
+      {id: 'a3',  menuBtnColor: 'yellow', buttonIconName: 'menu-icon', checked: false, enabled: true, tooltip: 'a3 action',
       children: [
-        {id: 'b1',  buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b1 action'},
-        {id: 'b2',  buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b2 action'},
-        {id: 'b3', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b3 action'},
+        {id: 'd1',  buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'd1 action'},
+        {id: 'd2',  buttonIconName: 'restore-icon', checked: false, enabled: false, tooltip: 'd2 action disable icon'},
+        {id: 'd3', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'd3 action'},
+        {id: 'd4', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'd4 action'},
       ]
       },
-      {id: 'a4', menuBtnColor: 'orange', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'a4 action'},
+      {id: 'a4', menuBtnColor: 'blue', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'a4 action'},
 
    ];
   }

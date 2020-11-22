@@ -9,6 +9,6 @@ export enum EnumGooeyMenuOpenDirection {
 }
 
 export enum EnumIconConditions {
-  Disable = 'diasable',
+  Disable = 'disable',
   Checked = 'checked'
 }

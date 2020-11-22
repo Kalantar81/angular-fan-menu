@@ -8,6 +8,15 @@
   background-image: url('~assets/svgIcons/restore.svg');
 }
 
+.restore-icon-checked {
+  background-image: url('~assets/svgIcons/restore-green.svg');
+}
+
+.restore-icon-disable {
+  background-image: url('~assets/svgIcons/restore.svg');
+  filter: grayscale(100%);
+}
+
 .restore-icon:hover {
   background: url('~assets/svgIcons/restore-cyan.svg');
   /* fill: lawngreen; */
