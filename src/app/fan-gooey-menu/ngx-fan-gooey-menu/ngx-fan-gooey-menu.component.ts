@@ -21,8 +21,8 @@ export class NgxFanGooeyMenuComponent {
   @Output()
   combineMenuActionName: EventEmitter<string> = new EventEmitter<string>();
 
-  public getCombineMenuActionName(activateAction: string): void {
-    this.combineMenuActionName.emit(activateAction);
+  public getCombineMenuActionName(actionName: string): void {
+    this.combineMenuActionName.emit(actionName);
   }
 
 }
