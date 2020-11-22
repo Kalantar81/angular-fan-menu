@@ -111,15 +111,15 @@ export class BlFourItemsFanGooeyMenuComponent implements OnInit, AfterViewInit {
     });
   }
 
-  public closeOpenItems(p_index: number): void {
-    if (this._fanMenuButtons[p_index].enabled) {
+  public closeOpenItems(button: IFanGooeyMenuButton): void {
+    if (button.enabled) {
       this.fanMenuChildren.map((item: GooeyMenuComponent) => {
         if (item.menuStatus.isMenuOpen) {
           item.clickGooeyMenuBtn();
         }
       });
     }
-    this.combineMenuActionName.emit(this._fanMenuButtons[p_index].id);
+    this.combineMenuActionName.emit(button.id);
   }
 
   public getCombineMenuActionName(p_gooeyActionName: string): void {
