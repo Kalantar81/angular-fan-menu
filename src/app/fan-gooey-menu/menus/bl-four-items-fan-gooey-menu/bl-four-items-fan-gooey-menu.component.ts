@@ -96,7 +96,7 @@ export class BlFourItemsFanGooeyMenuComponent implements OnInit, AfterViewInit {
   }
 
   public closeAllGooeyMenus(): void {
-    this.fanMenuChildren.map((item: GooeyMenuComponent) => {
+    this.fanMenuChildren.forEach((item: GooeyMenuComponent) => {
       if (item.menuStatus.isMenuOpen) {
         item.clickGooeyMenuBtn();
       }
@@ -104,7 +104,7 @@ export class BlFourItemsFanGooeyMenuComponent implements OnInit, AfterViewInit {
   }
 
   public updateMenus(event: IMenuStatus): void {
-    this.fanMenuChildren.map((item: GooeyMenuComponent) => {
+    this.fanMenuChildren.forEach((item: GooeyMenuComponent) => {
       if ((event.menuId !== item.gooeyBtnId) && (item.menuStatus.isMenuOpen)) {
         item.clickGooeyMenuBtn();
       }
@@ -113,7 +113,7 @@ export class BlFourItemsFanGooeyMenuComponent implements OnInit, AfterViewInit {
 
   public closeOpenItems(button: IFanGooeyMenuButton): void {
     if (button.enabled) {
-      this.fanMenuChildren.map((item: GooeyMenuComponent) => {
+      this.fanMenuChildren.forEach((item: GooeyMenuComponent) => {
         if (item.menuStatus.isMenuOpen) {
           item.clickGooeyMenuBtn();
         }
@@ -124,7 +124,7 @@ export class BlFourItemsFanGooeyMenuComponent implements OnInit, AfterViewInit {
 
   public getCombineMenuActionName(p_gooeyActionName: string): void {
     this.combineMenuActionName.emit(p_gooeyActionName);
-    this.fanMenuChildren.map((item: GooeyMenuComponent) => {
+    this.fanMenuChildren.forEach((item: GooeyMenuComponent) => {
       if (item.menuStatus.isMenuOpen && !(item.gooeyBtnId === p_gooeyActionName)) {
         item.clickGooeyMenuBtn();
       }
