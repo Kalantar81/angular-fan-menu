@@ -5,21 +5,21 @@
     <div
       #floatingBtn
       class="gooey-floating-btn menu-tooltip"
-      [ngClass]="_menuIcon"
+      [ngClass]="menuIcon"
       (click)="clickGooeyMenuBtn()">
           <span
-            *ngIf="_menuBtnTooltip"
-            [class.menu-tooltip-text]="_menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"
-            [class.menu-tooltip-text-right]="_menuOpenDirection == EnumGooeyMenuOpenDirection.UP">
-              {{_menuBtnTooltip}}
+            *ngIf="menuBtnTooltip"
+            [class.menu-tooltip-text]="menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"
+            [class.menu-tooltip-text-right]="menuOpenDirection == EnumGooeyMenuOpenDirection.UP">
+              {{menuBtnTooltip}}
           </span>
     </div>
     <menu class="gooey-menu-items-wrapper">
       <div
-        *ngFor="let item of _gooeyChildren; let i = index"
+        *ngFor="let item of gooeyChildren; let i = index"
         class="menu-tooltip"
-        [class.menu-item-gooey]="_menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"
-        [class.menu-item-gooey-open-up]="_menuOpenDirection == EnumGooeyMenuOpenDirection.UP"
+        [class.menu-item-gooey]="menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"
+        [class.menu-item-gooey-open-up]="menuOpenDirection == EnumGooeyMenuOpenDirection.UP"
         [ngClass]="[
               item.enabled ? item.buttonIconName : item.buttonIconName + '-' + EnumIconConditions.Disable,
               item.checked ? item.buttonIconName + '-' + EnumIconConditions.Checked : ''
@@ -27,8 +27,8 @@
         (click)="_childAction(i)">
               <span
                 *ngIf="item.tooltip"
-                [class.menu-tooltip-text]="_menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"
-                [class.menu-tooltip-text-right]="_menuOpenDirection == EnumGooeyMenuOpenDirection.UP">
+                [class.menu-tooltip-text]="menuOpenDirection == EnumGooeyMenuOpenDirection.RIGHT"
+                [class.menu-tooltip-text-right]="menuOpenDirection == EnumGooeyMenuOpenDirection.UP">
                   {{item.tooltip}}
               </span>
       </div>

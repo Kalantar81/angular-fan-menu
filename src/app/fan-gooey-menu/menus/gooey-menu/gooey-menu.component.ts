@@ -30,64 +30,28 @@ export class GooeyMenuComponent implements OnInit, AfterViewInit {
   @ViewChild('circularMenu')
   public circularMenuDiv: ElementRef;
 
-  @Input()
-  set menuBtnTooltip(p_menuBtnTooltip: string) {
-    this._menuBtnTooltip = p_menuBtnTooltip;
-  }
-
-  @Input()
-  set menuIcon(p_menuIcon: string) {
-    this._menuIcon = p_menuIcon;
-  }
-
-  @Input()
-  set menuOpenDirection(p_menuOpenDirection: EnumGooeyMenuOpenDirection) {
-    this._menuOpenDirection = p_menuOpenDirection;
-  }
-
-  @Input()
-  set menuBtnColor(p_menuBtnColor: string) {
-    this._menuBtnColor = p_menuBtnColor;
-  }
-
-  @Input()
-  set gooeyChildren(p_gooeyChildren: Array<IFanGooeyMenuButton>) {
-    this._gooeyChildren = p_gooeyChildren;
-  }
-
-  @Input()
-  set gooeyBtnId(p_gooeyBtnId: string) {
-    this._gooeyBtnId = p_gooeyBtnId;
-  }
-
-  get gooeyBtnId(): string {
-    return this._gooeyBtnId;
-  }
+  @Input() menuBtnTooltip: string;
+  @Input() menuIcon: string;
+  @Input() menuOpenDirection: EnumGooeyMenuOpenDirection;
+  @Input() menuBtnColor: string;
+  @Input() gooeyChildren: Array<IFanGooeyMenuButton>;
+  @Input() gooeyBtnId: string;
 
   set menuStatus(p_menuStatus: IMenuStatus) {
-    this._menuStaus = {
-      menuId: this._gooeyBtnId,
+    this._menuStatus = {
+      menuId: this.gooeyBtnId,
       isMenuOpen: p_menuStatus.isMenuOpen,
     };
   }
 
   get menuStatus(): IMenuStatus {
-    return this._menuStaus;
+    return this._menuStatus;
   }
 
-  @Output()
-  gooeyMenuActivated = new EventEmitter();
+  @Output() gooeyMenuActivated = new EventEmitter();
+  @Output() combineMenuActionName = new EventEmitter();
 
-  @Output()
-  combineMenuActionName = new EventEmitter();
-
-  private _menuBtnColor: string;
-  private _menuBtnTooltip: string;
-  private _menuIcon: string;
-  private _menuOpenDirection: EnumGooeyMenuOpenDirection;
-  private _gooeyBtnId: string;
-  private _gooeyChildren: Array<IFanGooeyMenuButton>;
-  private _menuStaus: IMenuStatus;
+  private _menuStatus: IMenuStatus;
 
   public EnumGooeyMenuOpenDirection = EnumGooeyMenuOpenDirection;
   public EnumIconConditions = EnumIconConditions;
@@ -96,31 +60,31 @@ export class GooeyMenuComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.floatingBtnDiv.nativeElement.style.backgroundColor = this._menuBtnColor;
+    this.floatingBtnDiv.nativeElement.style.backgroundColor = this.menuBtnColor;
     this.menuStatus = {
       isMenuOpen: false,
-      menuId: this._gooeyBtnId,
+      menuId: this.gooeyBtnId,
     };
   }
 
   ngAfterViewInit() {
-    this.circularMenuDiv.nativeElement.id = this._gooeyBtnId;
+    this.circularMenuDiv.nativeElement.id = this.gooeyBtnId;
   }
 
-  private _childAction(p_index: number): void {
-    if (this._gooeyChildren[p_index].enabled) {
-      this.combineMenuActionName.emit(this._gooeyChildren[p_index].id);
+  public _childAction(p_index: number): void {
+    if (this.gooeyChildren[p_index].enabled) {
+      this.combineMenuActionName.emit(this.gooeyChildren[p_index].id);
     }
   }
 
   public clickGooeyMenuBtn(): void {
     document.getElementById(this.circularMenuDiv.nativeElement.id).classList.toggle('active');
-    if (this._menuStaus.isMenuOpen) {
-      this._menuStaus.isMenuOpen = false;
+    if (this._menuStatus.isMenuOpen) {
+      this._menuStatus.isMenuOpen = false;
     } else {
-      this._menuStaus.isMenuOpen = true;
+      this._menuStatus.isMenuOpen = true;
       this.gooeyMenuActivated.emit(this.menuStatus);
-      this.combineMenuActionName.emit(this._gooeyBtnId);
+      this.combineMenuActionName.emit(this.gooeyBtnId);
     }
   }
 
