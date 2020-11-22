@@ -1,12 +1,12 @@
 <div
   #circularMenuLeft
   id="bottomLeftFanGooeyMenu"
-  class="circular-menu-left  circular-menu-bottom-left"
+  class="circular-menu-left circular-menu-bottom-left"
   [ngClass]="{'active': openMenuIndicator}">
   <div
     class="floating-btn"
-    [ngClass]="_menuIconName"
-    [style.background-color]="_fanMenuBtnColor ? _fanMenuBtnColor: '#ff9900'"
+    [ngClass]="menuIconName"
+    [style.background-color]="fanMenuBtnColor ? fanMenuBtnColor: '#ff9900'"
     (click)="fanMenuBtnClick()">
     <div></div>
   </div>
@@ -19,7 +19,7 @@
           fanMenuButton.enabled ? fanMenuButton.buttonIconName : fanMenuButton.buttonIconName + '-' + EnumIconConditions.Disable,
           fanMenuButton.checked ? fanMenuButton.buttonIconName + '-' + EnumIconConditions.Checked : ''
         ]"
-      (click)="_closeOpenItems(i)">
+      (click)="closeOpenItems(i)">
         <span
           *ngIf="fanMenuButton.tooltip"
           class="menu-tooltip-text">
@@ -36,8 +36,8 @@
         [menuOpenDirection]="item.openGooeyMenuDirection"
         [gooeyBtnId]="item.id"
         [menuBtnTooltip]="item.tooltip"
-        (gooeyMenuActivated)="_updateMenus($event)"
-        (combineMenuActionName)="_getcombineMenuActionName($event)">
+        (gooeyMenuActivated)="updateMenus($event)"
+        (combineMenuActionName)="getCombineMenuActionName($event)">
       </app-gooey-menu>
     </div>
   </menu>
