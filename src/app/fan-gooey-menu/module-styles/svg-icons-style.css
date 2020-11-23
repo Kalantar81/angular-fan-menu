@@ -26,3 +26,20 @@
 .map-icon {
   background-image: url('~assets/svgIcons/map.svg');
 }
+
+.color-magnifier-icon {
+  background-image: url('~assets/svgIcons/color-magnifier.svg');
+}
+
+.color-magnifier-icon-disable {
+  background-image: url('~assets/svgIcons/color-magnifier.svg');
+  filter: grayscale(100%);
+}
+
+.color-magnifier-icon-checked {
+  background-image: url('~assets/svgIcons/color-magnifier-green.svg');
+}
+
+.color-magnifier-icon:hover {
+  background-image: url('~assets/svgIcons/color-magnifier-cyan.svg');
+}
