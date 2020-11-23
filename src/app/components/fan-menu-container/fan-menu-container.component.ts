@@ -14,6 +14,8 @@ export class FanMenuContainerComponent implements OnInit {
   private _fanMenuBtnColor: string;
   private _gooeyItems: Array<IFanGooeyMenuButton>;
 
+  public clickeIconId: string;
+
   constructor() {
     this._isOpenAtStart = true;
     this._menuIconName = 'menu-icon';
@@ -53,6 +55,8 @@ export class FanMenuContainerComponent implements OnInit {
   }
 
 
-  private _getcombineMenuActionName(p_actionId: string): void {}
+  private _getcombineMenuActionName(p_actionId: string): void {
+    this.clickeIconId = p_actionId;
+  }
 
 }

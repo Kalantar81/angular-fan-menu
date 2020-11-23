@@ -1,0 +1,10 @@
+.id-design {
+  width: 200px;
+  height: 60px;
+  background-color: gainsboro;
+  border-bottom: 4px solid blue;
+  text-align: center;
+  margin-top: 200px;
+  margin-left: 400px;
+  font-size: 40px;
+}
