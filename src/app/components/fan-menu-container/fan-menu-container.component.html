@@ -1,11 +1,11 @@
 <div class="menu-container">
   <ngx-fan-gooey-menu
-    [isOpenAtStart] = "_isOpenAtStart"
-    [menuIconName] = "_menuIconName"
-    [menuSize] = "_menuSize"
-    [fanMenuBtnColor] = "_fanMenuBtnColor"
-    [gooeyItems] = "_gooeyItems"
-    (combineMenuActionName) = "_getcombineMenuActionName($event)">
+    [isOpenAtStart]="isOpenAtStart"
+    [menuIconName]="menuIconName"
+    [menuSize]="menuSize"
+    [fanMenuBtnColor]="fanMenuBtnColor"
+    [gooeyItems]="gooeyItems"
+    (combineMenuActionName)="getCombineMenuActionName($event)">
   </ngx-fan-gooey-menu>
   <div
     *ngIf="clickeIconId"
