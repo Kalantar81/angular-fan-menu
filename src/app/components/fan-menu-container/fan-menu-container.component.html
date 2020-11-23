@@ -7,4 +7,9 @@
     [gooeyItems]="gooeyItems"
     (combineMenuActionName)="getCombineMenuActionName($event)">
   </ngx-fan-gooey-menu>
+  <div
+    *ngIf="clickeIconId"
+    class="id-design">
+      {{clickeIconId}}
+  </div>
 </div>

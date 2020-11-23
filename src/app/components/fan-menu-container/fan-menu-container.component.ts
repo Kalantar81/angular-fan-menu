@@ -11,6 +11,7 @@ import { IFanGooeyMenuButton } from 'app/fan-gooey-menu/models/IFan-menu-interfa
 })
 export class FanMenuContainerComponent implements OnInit {
 
+
   public isOpenAtStart: boolean = true;
   public menuIconName: string = 'menu-icon';
   public menuSize: number = 1;
@@ -18,6 +19,7 @@ export class FanMenuContainerComponent implements OnInit {
   public gooeyItems: Array<IFanGooeyMenuButton> = [
     {
       id: 'a1', menuBtnColor: 'orange', buttonIconName: 'menu-icon', checked: false, enabled: true, tooltip: 'a1 action',
+
       children: [
         {id: 'b1', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b1 action'},
         {id: 'b2', buttonIconName: 'restore-icon', checked: false, enabled: true, tooltip: 'b2 action'},
@@ -54,7 +56,11 @@ export class FanMenuContainerComponent implements OnInit {
 
   }
 
-  public getCombineMenuActionName(actionName: string): void {
+
+
+  private getcombineMenuActionName(p_actionId: string): void {
+    this.clickeIconId = p_actionId;
+
   }
 
 }
